@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
@@ -6,6 +8,11 @@ plugins {
 android {
     namespace = "com.ivasco.moviestest"
     compileSdk = 34
+
+    val properties = Properties()
+    if (project.rootProject.file("local.properties").exists()) {
+        properties.load(project.rootProject.file("local.properties").inputStream())
+    }
 
     defaultConfig {
         applicationId = "com.ivasco.moviestest"
@@ -18,12 +25,16 @@ android {
     }
 
     buildTypes {
-        release {
+        getByName("release") {
             isMinifyEnabled = false
+
             proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
+                getDefaultProguardFile("proguard-android.txt"),
                 "proguard-rules.pro"
             )
+        }
+        getByName("debug") {
+            resValue ("string", "tmdb_key", properties.getProperty("tmdb.key", ""))
         }
     }
     compileOptions {
@@ -36,12 +47,18 @@ android {
 }
 
 dependencies {
-
-    implementation("androidx.core:core-ktx:1.12.0")
-    implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.11.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+    implementation(Libs.kotlin)
+    implementation(Libs.koinAndroidx)
+    implementation(Libs.androidXConstraintLayout)
+    implementation(Libs.googleMaterial)
+    implementation(Libs.androidxAppCompat)
+    implementation(Libs.androidxCore)
+    implementation(project(Modules.utils))
+    implementation(Libs.navigationFragment)
+    implementation(Libs.navigationUi)
+    testImplementation(Libs.junit4)
+    testImplementation(Libs.testMockk)
+    testImplementation(Libs.testMockkInstrumented)
+    androidTestImplementation(Libs.junitExt)
+    androidTestImplementation(Libs.espresso)
 }
