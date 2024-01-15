@@ -1,19 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<com.ivasco.moviestest.designsystem.CustomSwipeRefreshLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/srl_fragment_movie_list"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.ivasco.moviestest.designsystem.AutofitRecyclerView
+            android:id="@+id/rv_fragment_movie_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:columnWidth="@dimen/grid_column_width"
+            android:paddingTop="@dimen/margin_minimum"
+            android:paddingLeft="@dimen/margin_minimum"
+            android:paddingRight="@dimen/margin_minimum"
+            android:paddingBottom="@dimen/margin_huge"
+            tools:listitem="@layout/row_movie_list" />
+
+        <ProgressBar
+            android:id="@+id/pb_fragment_movie_list"
+            android:layout_width="@dimen/small_progress_bar_size"
+            android:layout_height="@dimen/small_progress_bar_size"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/margin_semi_medium"
+            android:visibility="gone"/>
+
+    </RelativeLayout>
+
+</com.ivasco.moviestest.designsystem.CustomSwipeRefreshLayout>

@@ -11,14 +11,11 @@ object DefaultConfig {
     val compileSdk = 33
 }
 
-object Modules {
-    val utils = ":utils"
-}
-
 object Versions {
-    const val KOTLIN_VERSION = "1.5.30"
+    const val KOTLIN_VERSION = "1.8.20"
     const val COROUTINES_VERSION = "1.5.0"
     const val GRADLE_TOOLS_VERSION = "4.2.1"
+    const val ANDROIDX_SWIPE_REFRESH_LAYOUT_VERSION = "1.1.0"
 
     const val FRAGMENT_VERSION = "1.3.3"
     const val LIFECYCLE_VERSION = "2.3.1"
@@ -50,6 +47,9 @@ object Libs {
     val coroutinesTest = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Versions.COROUTINES_VERSION}"
     val coroutinesCore = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.COROUTINES_VERSION}"
     val coroutinesAndroid = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.COROUTINES_VERSION}"
+
+    // SwipeRefresh layout
+    val swipeRefreshLayout = "androidx.swiperefreshlayout:swiperefreshlayout:${Versions.ANDROIDX_SWIPE_REFRESH_LAYOUT_VERSION}"
 
     val androidxCore = "androidx.core:core-ktx:${Versions.ANDROIDX_CORE_VERSION}"
     val androidxAppCompat = "androidx.appcompat:appcompat:${Versions.ANDROIDX_APP_COMPAT_VERSION}"

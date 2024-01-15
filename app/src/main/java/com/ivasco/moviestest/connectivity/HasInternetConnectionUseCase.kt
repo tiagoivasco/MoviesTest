@@ -3,9 +3,9 @@ package com.ivasco.moviestest.connectivity
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
-import com.ivasco.utils.connectivity.ConnectivityUtils
+import com.ivasco.moviestest.common.utils.ConnectivityUtils
 
-internal class HasInternetConnectionUseCase(private val context: Context) : ConnectivityUtils {
+class HasInternetConnectionUseCase(private val context: Context) : ConnectivityUtils {
     override fun isNetworkAvailable(): Boolean {
         try {
             val connectivityManager =
