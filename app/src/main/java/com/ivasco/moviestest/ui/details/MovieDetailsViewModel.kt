@@ -14,14 +14,10 @@ class MovieDetailsViewModel(private val getSingleMovieUseCase: GetSingleMovieUse
 ) : ViewModel() {
 
     private val singleMovieStateFlow = MutableStateFlow<Resource<MovieDetail>>(Resource.empty())
-    private val favoritesStateFlow = MutableStateFlow<Resource<Boolean>>(Resource.empty())
     var disposable: Disposable? = null
 
     val singleMovieState: StateFlow<Resource<MovieDetail>>
         get() = singleMovieStateFlow
-
-    val favoritesState: StateFlow<Resource<Boolean>>
-        get() = favoritesStateFlow
 
     fun fetchSingleMovie(id: String) {
         singleMovieStateFlow.value = Resource.loading()

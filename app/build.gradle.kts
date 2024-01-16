@@ -50,6 +50,12 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+    testOptions {
+        unitTests {
+            isReturnDefaultValues = true
+            isIncludeAndroidResources = true
+        }
+    }
 }
 
 dependencies {
@@ -60,7 +66,6 @@ dependencies {
     implementation(Libs.retrofit)
     implementation(Libs.moshi)
     implementation(Libs.viewModels)
-//    implementation(Libs.androidxAppCompat)
     implementation(Libs.androidxCore)
     implementation(Libs.navigationFragment)
     implementation(Libs.navigationUi)
@@ -75,12 +80,18 @@ dependencies {
     implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
     implementation("com.squareup.okhttp3:okhttp-urlconnection:4.4.1")
-//    implementation("com.squareup.retrofit2:adapter-rxjava3:2.9.0")
     implementation("com.squareup.retrofit2:adapter-rxjava2:2.9.0")
     implementation("com.github.bumptech.glide:glide:4.16.0")
     implementation("androidx.palette:palette-ktx:1.0.0")
     implementation("io.reactivex.rxjava2:rxandroid:2.1.1")
     implementation("android.arch.lifecycle:extensions:1.1.1")
+    testImplementation("org.mockito:mockito-core:2.28.2")
+    androidTestImplementation("org.mockito:mockito-android:2.28.2")
+    testImplementation("org.mockito:mockito-inline:2.28.2")
+    androidTestImplementation("androidx.arch.core:core-testing:2.2.0")
+    testImplementation("android.arch.core:core-testing:1.1.1")
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
+    androidTestImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
 }
 
 fun getApiKey(): String {

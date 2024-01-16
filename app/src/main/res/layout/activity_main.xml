@@ -1,36 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.ivasco.moviestest.designsystem.CustomSwipeRefreshLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.ivasco.moviestest.designsystem.CustomSwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/srl_fragment_movie_list"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/black">
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorStatusBarDark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:liftOnScroll="true">
+
+            <TextView
+                android:id="@+id/logoSign"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:padding="@dimen/margin_small"
+                android:text="@string/popular_movies"
+                android:textColor="@color/white" />
+
+        </com.google.android.material.appbar.AppBarLayout>
 
         <com.ivasco.moviestest.designsystem.AutofitRecyclerView
             android:id="@+id/rv_fragment_movie_list"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="0dp"
+            android:layout_below="@+id/app_bar"
             android:clipToPadding="false"
             android:columnWidth="@dimen/grid_column_width"
-            android:paddingTop="@dimen/margin_minimum"
             android:paddingLeft="@dimen/margin_minimum"
+            android:paddingTop="@dimen/margin_minimum"
             android:paddingRight="@dimen/margin_minimum"
             android:paddingBottom="@dimen/margin_huge"
+            app:layout_constraintTop_toBottomOf="@+id/app_bar"
             tools:listitem="@layout/row_movie_list" />
 
         <ProgressBar
             android:id="@+id/pb_fragment_movie_list"
             android:layout_width="@dimen/small_progress_bar_size"
             android:layout_height="@dimen/small_progress_bar_size"
-            android:layout_centerHorizontal="true"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="@dimen/margin_semi_medium"
-            android:visibility="gone"/>
+            android:layout_centerHorizontal="true"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/app_bar" />
 
-    </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </com.ivasco.moviestest.designsystem.CustomSwipeRefreshLayout>

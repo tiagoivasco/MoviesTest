@@ -3,6 +3,7 @@ package com.ivasco.moviestest.ui.home
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.snackbar.Snackbar
@@ -20,11 +21,10 @@ import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-
 class HomeActivity : AppCompatActivity(), MovieListAdapter.OnItemClickListener {
 
     private lateinit var binding: ActivityMainBinding
-    val viewModel: HomeViewModel by viewModel ()
+    val viewModel: HomeViewModel by viewModel()
     private val movieListAdapter: MovieListAdapter by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -100,12 +100,11 @@ class HomeActivity : AppCompatActivity(), MovieListAdapter.OnItemClickListener {
             Resource.Status.ERROR -> {
                 binding.srlFragmentMovieList.isRefreshing = false
                 binding.pbFragmentMovieList.gone()
-                Snackbar.make(
-                    binding.srlFragmentMovieList,
+                Toast.makeText(
+                    this@HomeActivity,
                     getString(R.string.error_message_pattern, state.message),
-                    Snackbar.LENGTH_LONG
-                )
-                    .setAnchorId(R.id.pb_fragment_movie_list).show()
+                    Toast.LENGTH_LONG
+                ).show()
             }
 
             Resource.Status.EMPTY -> {
